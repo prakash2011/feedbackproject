@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedBack Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {% comment %} <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {% endcomment %}
+
+</head>
+<body>
+    {% comment %} <h1> survey forum</h1> {% endcomment %}
+       
+
+        <nav>
+          <div class="nav-wrapper bg-color:red">
+            <img src="{% static 'images\win.png' %}" class="brand-logo"> <style>
+              img{
+           
+                margin-left:15px;
+                margin-top:5px;
+                margin-bottom:10px;
+                padding-bottom:40px;
+                width:75px;
+                height:45px;
+           
+                
+              }
+            </style>
+            {% comment %} <ul class="sidenav" id="mobile-demo"> {% endcomment %}
+            <ul class="right hide-on-med-and-down">
+              <li><a href="/"><i class="material-icons">Home</i></a></li>
+              <li><a href="/about"><i class="material-icons">About Us</i></a></li>
+              {%  if  user.is_authenticated %}
+              <li> <form method="POST" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <a href="{% url 'logout' %}"><i class="button">Logout</i></a></li>
+
+              {% else %}
+            <li><a href="{% url 'login' %}"><i class="material-icons">Login</i></a></li>
+            <li><a href="/register"><i class="material-icons">Register</i></a></li>
+            {% endif %}
+          </ul>
+        {% comment %} </ul> {% endcomment %}
+
+          </div>
+        </nav>
+        
+        
+        
+  {% block start %}
+            
+
+  {% endblock %}
+  <style>
+    .page-footer{
+      margin-top:25px;
+    }
+  </style>
+  <footer class="page-footer">
+    <div class="container">
+     
+    <div class="footer-copyright">
+      <div class="container">
+      © 2024 Copyright Feedback
+     
+      </div>
+    </div>
+  </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
+</body>
+</html>
